@@ -27,6 +27,7 @@ socket2 = { version = "0.6", features = ["all"] }      # socket APIs
 socket-pktinfo = "0.3.2"
 # support for serde's deserialize/serialize traits
 serde = { version = "1.0.228", features = ["derive"], optional = true }
+regex = "1.12"
 
 [dev-dependencies]
 env_logger = { version = "= 0.10.2", default-features = false, features= ["humantime"] }

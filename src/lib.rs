@@ -191,6 +191,8 @@ pub use service_info::{
 /// A handler to receive messages from [ServiceDaemon]. Re-export from `flume` crate.
 pub use flume::Receiver;
 
+pub use regex;
+
 use std::time::SystemTime;
 
 /// Returns the current time in milliseconds since the UNIX epoch.

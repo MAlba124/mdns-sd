@@ -509,6 +509,7 @@ impl ServiceInfo {
         let addr = intf.ip();
         let interface_supported = self.supported_intfs.iter().any(|i| match i {
             IfKind::Name(name) => *name == intf.name,
+            IfKind::NameRegex(re) => re.is_match(&intf.name),
             IfKind::IPv4 => addr.is_ipv4(),
             IfKind::IPv6 => addr.is_ipv6(),
             IfKind::Addr(a) => *a == addr,

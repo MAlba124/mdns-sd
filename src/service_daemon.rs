@@ -887,6 +887,9 @@ pub enum IfKind {
     /// By the interface name, for example "en0"
     Name(String),
 
+    /// By the interface name regex.
+    NameRegex(regex::Regex),
+
     /// By an IPv4 or IPv6 address.
     /// This is used to look up the interface. The semantics is to identify an interface of
     /// IPv4 or IPv6, not a specific address on the interface.
@@ -915,6 +918,7 @@ impl IfKind {
             Self::IPv4 => intf.ip().is_ipv4(),
             Self::IPv6 => intf.ip().is_ipv6(),
             Self::Name(ifname) => ifname == &intf.name,
+            Self::NameRegex(re) => re.is_match(&intf.name),
             Self::Addr(addr) => addr == &intf.ip(),
             Self::LoopbackV4 => intf.is_loopback() && intf.ip().is_ipv4(),
             Self::LoopbackV6 => intf.is_loopback() && intf.ip().is_ipv6(),
